@@ -60,7 +60,6 @@ public final class MyRenderer extends RajawaliRenderer {
 		
 		public MyMaterial() {
 			super(mVShader, mFShader);
-			setShaders();
 		}
 	}
 } 
