@@ -2,5 +2,7 @@
 <resources>
 
     <string name="app_name">Rajawali Test</string>
+    <string name="pref_cat_main_title">General</string>
+    <string name="pref_box_color_title">Box Color</string>
 
 </resources>

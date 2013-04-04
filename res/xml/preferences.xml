@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_cat_main_title" >
+        <ListPreference
+            android:dialogTitle="@string/pref_box_color_title"
+            android:entries="@array/box_color_entries"
+            android:entryValues="@array/box_color_entry_values"
+            android:key="prefBoxColor"
+            android:title="@string/pref_box_color_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

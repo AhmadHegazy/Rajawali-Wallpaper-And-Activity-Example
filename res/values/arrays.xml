@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="box_color_entries">
+        <item>White</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
+    <string-array name="box_color_entry_values">
+        <item>16777215</item>
+        <item>16716049</item>
+        <item>1179409</item>
+        <item>1118719</item>
+    </string-array>
+
+</resources>

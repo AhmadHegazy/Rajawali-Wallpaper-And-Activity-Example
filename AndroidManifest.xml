@@ -34,6 +34,12 @@
                 android:name="android.service.wallpaper"
                 android:resource="@xml/settings" />
         </service>
+
+        <activity
+            android:name="WallpaperPreferencesActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" >
+        </activity>
     </application>
 
 </manifest>
