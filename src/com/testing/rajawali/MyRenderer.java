@@ -7,9 +7,10 @@ import rajawali.materials.TextureManager.TextureType;
 import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.BitmapFactory;
 
 public final class MyRenderer extends RajawaliRenderer {
+
+	private static final int SIMPLE_VERTEX_MATERIAL = com.monyetmabuk.livewallpapers.photosdof.R.raw.simple_material_vertex;
 
 	private UserPrefs mUserPrefs;
 	private Plane box;
@@ -27,14 +28,14 @@ public final class MyRenderer extends RajawaliRenderer {
 		final MySimpleMaterial material = new MySimpleMaterial();
 		material.setUseColor(true);
 
-		box = new Plane(1, 1, 1, 1, 1);
+		box = new Plane(1, 1, 1, 1);
 		box.setMaterial(material);
 		box.setTransparent(true);
 		box.setColor(0xffffff);
 		box.setX(-0.25f);
 		addChild(box);
 
-		final Plane mPlane2 = new Plane(1, 1, 1, 1, 1);
+		final Plane mPlane2 = new Plane(1, 1, 1, 1);
 		mPlane2.setMaterial(material);
 		mPlane2.setManageMaterial(false);
 		mPlane2.setTransparent(true);
@@ -44,11 +45,9 @@ public final class MyRenderer extends RajawaliRenderer {
 		addChild(mPlane2);
 
 		final MyTextureMaterial material2 = new MyTextureMaterial();
-		material2.addTexture(mTextureManager.addTexture(BitmapFactory
-				.decodeResource(mContext.getResources(),
-						R.drawable.texture_normal)));
+		material2.addTexture(mTextureManager.addTexture(R.drawable.texture_normal));
 
-		final Plane mPlane3 = new Plane(1, 1, 1, 1, 1);
+		final Plane mPlane3 = new Plane(1, 1, 1, 1);
 		mPlane3.setMaterial(material2);
 		mPlane3.setColor(0xaaffffff);
 		mPlane3.setTransparent(true);
@@ -57,14 +56,14 @@ public final class MyRenderer extends RajawaliRenderer {
 		addChild(mPlane3);
 
 		final SimpleMaterial material3 = new SimpleMaterial();
-		material3.addTexture(mTextureManager.addEtc1Texture(mContext,
+		material3.addTexture(mTextureManager.addEtc1Texture(
 				new int[] { R.raw.texture_normal_mip_0,
 						R.raw.texture_normal_mip_1, R.raw.texture_normal_mip_2,
 						R.raw.texture_normal_mip_3, R.raw.texture_normal_mip_4,
 						R.raw.texture_normal_mip_5, R.raw.texture_normal_mip_6,
 						R.raw.texture_normal_mip_7 }, TextureType.DIFFUSE));
 
-		final Plane mPlane4 = new Plane(1, 1, 1, 1, 1);
+		final Plane mPlane4 = new Plane(1, 1, 1, 1);
 		mPlane4.setMaterial(material3);
 		mPlane4.setY(-0.5f);
 		mPlane4.setRotZ(-90);
@@ -79,44 +78,16 @@ public final class MyRenderer extends RajawaliRenderer {
 	}
 
 	public static final class MySimpleMaterial extends SimpleMaterial {
-		//@formatter:off
-		protected static final String mFShader = 
-				"precision mediump float;\n" +
-
-				"varying vec2 vTextureCoord;\n" + 
-				"uniform sampler2D uDiffuseTexture;\n" + 
-				"varying vec4 vColor;\n" +
-				
-				"vec4 modifiedColor;\n" +
-
-				"void main() {\n" + 
-				"	modifiedColor = vColor;\n" +
-				"	modifiedColor.a = max(modifiedColor.a, 0.5);" +
-				"	gl_FragColor = modifiedColor;\n" + 
-				"}\n";
-		//@formatter:on
 
 		public MySimpleMaterial() {
-			super(mVShader, mFShader);
+			super(SIMPLE_VERTEX_MATERIAL, R.raw.mat_simple);
 		}
 	}
-	
+
 	public static final class MyTextureMaterial extends SimpleMaterial {
-		//@formatter:off
-		protected static final String mFShader = 
-				"precision mediump float;\n" +
-
-				"varying vec2 vTextureCoord;\n" + 
-				"uniform sampler2D uDiffuseTexture;\n" + 
-				"varying vec4 vColor;\n" +
-
-				"void main() {\n" + 
-				"	gl_FragColor = texture2D(uDiffuseTexture, vTextureCoord) * vColor;\n" + 
-				"}\n";
-		//@formatter:on
 
 		public MyTextureMaterial() {
-			super(mVShader, mFShader);
+			super(SIMPLE_VERTEX_MATERIAL, R.raw.mat_texture);
 		}
 	}
 }
