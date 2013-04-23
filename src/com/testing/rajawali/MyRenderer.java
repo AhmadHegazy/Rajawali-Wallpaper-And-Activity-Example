@@ -2,16 +2,21 @@ package com.testing.rajawali;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import rajawali.animation.TranslateAnimation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.TextureManager.TextureType;
+import rajawali.math.Number3D;
 import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
+import android.view.animation.LinearInterpolator;
 
 public final class MyRenderer extends RajawaliRenderer {
 
 	private static final int SIMPLE_VERTEX_MATERIAL = com.monyetmabuk.livewallpapers.photosdof.R.raw.simple_material_vertex;
 
+	private TranslateAnimation3D mTranslateAnimation;
 	private UserPrefs mUserPrefs;
 	private Plane box;
 
@@ -24,7 +29,9 @@ public final class MyRenderer extends RajawaliRenderer {
 	}
 
 	@Override
-	protected void initScene() {
+	protected void initScene() {	
+		setFrameRate(60);
+		
 		final MySimpleMaterial material = new MySimpleMaterial();
 		material.setUseColor(true);
 
@@ -43,6 +50,13 @@ public final class MyRenderer extends RajawaliRenderer {
 		mPlane2.setZ(0.1f);
 		mPlane2.setX(0.25f);
 		addChild(mPlane2);
+		
+		final Number3D toPosition = new Number3D(mPlane2.getPosition());
+		toPosition.x = 3f;
+		
+		mTranslateAnimation = new TranslateAnimation3D(mPlane2, toPosition, 1000, 0, RepeatMode.INFINITE, new LinearInterpolator());
+		registerAnimation(mTranslateAnimation);
+		mTranslateAnimation.play();
 
 		final MyTextureMaterial material2 = new MyTextureMaterial();
 		material2.addTexture(mTextureManager.addTexture(R.drawable.texture_normal));
@@ -73,7 +87,6 @@ public final class MyRenderer extends RajawaliRenderer {
 	@Override
 	public void onDrawFrame(GL10 glUnused) {
 		box.setColor(mUserPrefs.getBoxColor());
-
 		super.onDrawFrame(glUnused);
 	}
 
