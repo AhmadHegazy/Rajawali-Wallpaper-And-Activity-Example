@@ -2,15 +2,14 @@ package com.testing.rajawali;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.animation.TranslateAnimation3D;
 import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.TranslateAnimation3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.TextureManager.TextureType;
 import rajawali.math.Number3D;
 import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.view.animation.LinearInterpolator;
 
 public final class MyRenderer extends RajawaliRenderer {
 
@@ -54,7 +53,11 @@ public final class MyRenderer extends RajawaliRenderer {
 		final Number3D toPosition = new Number3D(mPlane2.getPosition());
 		toPosition.x = 3f;
 		
-		mTranslateAnimation = new TranslateAnimation3D(mPlane2, toPosition, 1000, 0, RepeatMode.INFINITE, new LinearInterpolator());
+		mTranslateAnimation = new TranslateAnimation3D(mPlane2.getPosition().clone(), toPosition);
+		mTranslateAnimation.setDelay(1000);
+		mTranslateAnimation.setTransformable3D(mPlane2);
+		mTranslateAnimation.setDuration(2000);
+		mTranslateAnimation.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		registerAnimation(mTranslateAnimation);
 		mTranslateAnimation.play();
 
