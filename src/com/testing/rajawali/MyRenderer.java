@@ -2,9 +2,6 @@ package com.testing.rajawali;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.ColorAnimation3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.TextureManager.TextureType;
 import rajawali.math.Number3D;
@@ -55,14 +52,14 @@ public final class MyRenderer extends RajawaliRenderer {
 		final Number3D toPosition = new Number3D(mPlaneRight.getPosition());
 		toPosition.x = 2f;
 		
-		final Animation3D mAnimRightPlane;
+		/*final Animation3D mAnimRightPlane;
 		mAnimRightPlane = new ColorAnimation3D(0xaaff1111, 0xaaffff11);
 		mAnimRightPlane.setDelay(1000);
 		mAnimRightPlane.setTransformable3D(mPlaneRight);
 		mAnimRightPlane.setDuration(2000);
 		mAnimRightPlane.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		registerAnimation(mAnimRightPlane);
-		mAnimRightPlane.play();
+		mAnimRightPlane.play();*/
 
 		final MyTextureMaterial material3 = new MyTextureMaterial();
 		material3.setUseColor(true);
