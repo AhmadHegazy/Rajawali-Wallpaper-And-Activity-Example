@@ -1,6 +1,6 @@
 package com.testing.rajawali;
 
-import rajawali.RajawaliFragmentActivity;
+import rajawali.RajawaliActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -10,8 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
-public class MainActivity extends RajawaliFragmentActivity implements
-		OnClickListener {
+public class MainActivity extends RajawaliActivity implements OnClickListener {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
