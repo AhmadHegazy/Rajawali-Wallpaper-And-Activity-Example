@@ -69,9 +69,9 @@ public final class MyRenderer extends RajawaliRenderer {
 
 		final Plane mPlaneTopAndroid = new Plane(1, 1, 1, 1);
 		mPlaneTopAndroid.setMaterial(material3);
-		mPlaneTopAndroid.setColor(0xaa1111ff);
 		mPlaneTopAndroid.addTexture(mTextureManager
 				.addTexture(R.drawable.texture_normal));
+		mPlaneTopAndroid.setColor(0xaa1111ff);
 		mPlaneTopAndroid.setTransparent(true);
 		mPlaneTopAndroid.setY(0.5f);
 		mPlaneTopAndroid.setZ(0.01f);
